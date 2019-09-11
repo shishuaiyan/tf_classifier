@@ -72,9 +72,9 @@ class Trainer:
                 writer.add_summary(result_, step)
                 saver.save(sess, os.path.join(gl.ckpt_save_dir, 'model'), global_step=step)
                 if sum(acc_list_)/len(acc_list_) > 0.75:   # 0.75
-                    valid_dict = {inputs: valid_images, labels: valid_labels}
-                    valid_predictions = sess.run(predictions, feed_dict=valid_dict)
-                    # valid_acc_list_ = calValidAcc(valid_predictions, valid_batch_label)
+                    # valid_dict = {inputs: valid_images, labels: valid_labels}
+                    # valid_predictions = sess.run(predictions, feed_dict=valid_dict)
+                    # # valid_acc_list_ = calValidAcc(valid_predictions, valid_batch_label)
                     print('task: {:<6s} step: {:<5d}  loss: {:<1.10f}   acc: {}   valid_acc: {}'.format('multi', step, loss_, acc_list_, '999'))
                 else:
                     print('task: {:<6s} step: {:<5d}  loss: {:<1.10f}   acc: {}'.format('multi', step, loss_, acc_list_))

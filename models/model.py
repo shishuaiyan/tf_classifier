@@ -6,7 +6,7 @@ import tensorflow as tf
 import configs.global_variable as gl
 
 class Model(object):
-    def predict(self, inputs, is_training=True, default_name='HCNet'):
+    def predict(self, inputs, is_training=False, default_name='HCNet'):
         pass
         # with tf.variable_scope(None, default_name, [inputs]):
         # return head_sex, head_age, head_hat, head_glass
@@ -15,13 +15,11 @@ class Model(object):
         loss = tf.reduce_mean(
             tf.nn.sparse_softmax_cross_entropy_with_logits(logits=prediction[0], labels=groundtruth))  # np.log(np.exp(a)/(np.exp(a)+np.exp(b)))
         tf.summary.scalar('loss', loss)
-
         return loss
 
     def acc(self, prediction, groundtruth):
         acc = tf.reduce_mean(tf.cast(tf.equal(self.postprocess(prediction[0]), groundtruth), 'float'))
         tf.summary.scalar('acc', acc)
-
         acc_list = [acc]
         return acc_list
 

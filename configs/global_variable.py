@@ -12,9 +12,10 @@ epoch_num = 2000
 learning_rate = 0.0001
 input_name = 'HCNet/inputs_clear'
 label_name = 'HCNet/labels_clear'
+# output_name is mobileNet/predictions
 optimizer = 'ADAM'  # ADADELTA, ADAM, SGD
-train_valid_dict = {'train': {0: r'D:\Desktop\shishuai.yan\Desktop\git_code\tfClassifier\image_classification\images\0',
-                              1: r'D:\Desktop\shishuai.yan\Desktop\git_code\tfClassifier\image_classification\images\1'},
+train_valid_dict = {'train': {0: r'D:\Desktop\shishuai.yan\Desktop\working\edge_detection\hcff\imgs\train_data\train_clear_2\0',
+                              1: r'D:\Desktop\shishuai.yan\Desktop\working\edge_detection\hcff\imgs\train_data\train_clear_2\1'},
                         'valid': {0: r'D:\Desktop\shishuai.yan\Desktop\temp\0', 1: r'D:\Desktop\shishuai.yan\Desktop\temp\1'}}
 ckpt_save_dir = r'D:\Desktop\shishuai.yan\Desktop\temp\out'
 

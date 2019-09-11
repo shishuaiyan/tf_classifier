@@ -3,8 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
-# tf.enable_eager_execution()
-
 class GenerateData:
     def __init__(self, train_valid_dict, image_size=64, batch_size=128, epoch=2, valid_batch_size=2000):
         self.train_paths, self.train_labels = self.__get_path_label(train_valid_dict['train'])
@@ -72,10 +70,12 @@ class GenerateData:
 
 
 def main():
+    tf.enable_eager_execution() # 开启动态图
+
     train_valid_dict = {'train': {0: r'D:\Desktop\shishuai.yan\Desktop\temp\0', 1: r'D:\Desktop\shishuai.yan\Desktop\temp\1'},
                         'valid': {0: r'D:\Desktop\shishuai.yan\Desktop\temp\0', 1: r'D:\Desktop\shishuai.yan\Desktop\temp\1'}}
     gd = GenerateData(train_valid_dict, image_size=64, batch_size=2)
-    dataset = gd.get_data(training=False)
+    dataset = gd.get_data(training=True)
 
     print(gd.train_paths)
     print(gd.train_labels)
@@ -83,6 +83,7 @@ def main():
     for j, (batch_img, batch_label) in enumerate(dataset):
         print('batch_num: ', j)
         for i in range(batch_img.shape[0]):
+            # print(batch_img[i])
             print(batch_img[i].shape, batch_label[i])
             plt.imshow(batch_img[i])
             plt.show()
